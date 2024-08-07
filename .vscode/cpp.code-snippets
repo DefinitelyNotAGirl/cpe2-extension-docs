@@ -1,0 +1,148 @@
+{
+	"warning": {
+		"prefix": "warning issue",
+		"body": [
+			"//,",
+			"//,",
+			"//, $1",
+			"//,",
+			"//,",
+			"class $2 : public issue {",
+			"public:",
+			"\tstatic action Action;",
+			"\tstatic std::stack<int(*)($2 e)> error;",
+			"\tstatic std::stack<void(*)($2 e)> warn;",
+			"\tstatic std::stack<void(*)($2 e)> info;",
+			"\t$2(std::string msg, origin orig, source src)",
+			"\t{",
+			"\t\tthis->msg = msg;",
+			"\t\tthis->trace.push_front(orig);",
+			"\t\tthis->src = src;",
+			"\t\tinvoke(*this);",
+			"\t}",
+			"};",
+			"#if defined(ISSUES_CXX)",
+			"\taction $2::Action = action::warning;",
+			"\tstd::stack<int(*)($2 e)> $2::error;",
+			"\tstd::stack<void(*)($2 e)> $2::warn;",
+			"\tstd::stack<void(*)($2 e)> $2::info;",
+			"#endif"
+		]
+	},
+	"error": {
+		"prefix": "error issue",
+		"body": [
+			"//!",
+			"//!",
+			"//! $1",
+			"//!",
+			"//!",
+			"class $2 : public issue {",
+			"public:",
+			"\tstatic action Action;",
+			"\tstatic std::stack<int(*)($2 e)> error;",
+			"\tstatic std::stack<void(*)($2 e)> warn;",
+			"\tstatic std::stack<void(*)($2 e)> info;",
+			"\t$2(std::string msg, origin orig, source src)",
+			"\t{",
+			"\t\tthis->msg = msg;",
+			"\t\tthis->trace.push_front(orig);",
+			"\t\tthis->src = src;",
+			"\t\tinvoke(*this);",
+			"\t}",
+			"};",
+			"#if defined(ISSUES_CXX)",
+			"\taction $2::Action = action::error;",
+			"\tstd::stack<int(*)($2 e)> $2::error;",
+			"\tstd::stack<void(*)($2 e)> $2::warn;",
+			"\tstd::stack<void(*)($2 e)> $2::info;",
+			"#endif"
+		]
+	},
+	"fatal error": {
+		"prefix": "error fatal issue",
+		"body": [
+			"//+",
+			"//+",
+			"//+ $1",
+			"//+",
+			"//+",
+			"class $2 : public fatal {",
+			"public:",
+			"\tstatic std::stack<int(*)($2 e)> error;",
+			"\tstatic std::stack<void(*)($2 e)> warn;",
+			"\tstatic std::stack<void(*)($2 e)> info;",
+			"\t$2(std::string msg, origin orig, source src)",
+			"\t{",
+			"\t\tthis->msg = msg;",
+			"\t\tthis->trace.push_front(orig);",
+			"\t\tthis->src = src;",
+			"\t\tinvoke(*this);",
+			"\t}",
+			"};",
+			"#if defined(ISSUES_CXX)",
+			"\tstd::stack<int(*)($2 e)> $2::error;",
+			"\tstd::stack<void(*)($2 e)> $2::warn;",
+			"\tstd::stack<void(*)($2 e)> $2::info;",
+			"#endif"
+		]
+	},
+	"routine implemantation": {
+		"prefix": "routine",
+		"body": [
+			"Routine(RoutineData,",
+			"\t[](void* __data){",
+			"\t\tRoutineData_T* data = (RoutineData_T*)__data;",
+			"\t\t$0",
+			"\t}",
+			");"
+		]
+	},
+	"push routine": {
+		"prefix": "routine",
+		"body": [
+			"$1.push_back(Routine(RoutineData,",
+			"\t[](void* __data){",
+			"\t\tRoutineData_T* data = (RoutineData_T*)__data;",
+			"\t\t$0",
+			"\t}",
+			"));"
+		]
+	},
+	"routine data": {
+		"prefix": "routine",
+		"body": [
+			"struct RoutineData_T {",
+			"};",
+			"RoutineData_T* RoutineData = new RoutineData_T;{",
+			"}"
+		]
+	},
+	"new event": {
+		"prefix": "new event",
+		"body": [
+			"namespace Data {",
+				"\tclass $1 {",
+				"\tpublic:",
+				"\t\t$0",
+				"\t};",
+			"}",
+			"/**",
+			" * @brief $2",
+			" */",
+			"global Event_T<Data::$1> $1;"
+		]
+	},
+	"new event handler": {
+		"prefix": "event handler",
+		"body": [
+			"Event::$1.EventHandlers.push_back(",
+			"\tEventHandler<Event::Data::$1>(",
+			"\t\t[](void* HandlerData, Event::Data::$1* EventData) {",
+			"\t\t\t$0",
+			"\t\t}",
+			"\t)",
+			");"
+		]
+	}
+}
