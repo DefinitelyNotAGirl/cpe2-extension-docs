@@ -8,3 +8,5 @@ def execute(cmd: str):
 		exit (1)
 
 execute("python ./build-system/main.py debug")
+execute("cd ../cpe2Example && ./cp2 -Wno-unimplemented -MD  -Wno-deprecated -Bbuild -Ddocumentation -Iinc --fno-libc -NOD -S -c -o build/main.o src/main.c2")
+print("debug run done")
