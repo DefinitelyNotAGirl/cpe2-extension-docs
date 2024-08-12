@@ -30,18 +30,7 @@ for dirpath, dirnames, filenames in os.walk(inputpath):
     structure = os.path.join(outputpath, dirpath[len(inputpath)+1:])
     if not os.path.isdir(structure):
         os.mkdir(structure)
-#+
-#+ build master style sheet
-#+
-MasterContent = "const char* masterStyleSheet = \n"
-MasterFile = open("styles/master.css")
-for line in MasterFile:
-    MasterContent+="\""+line.rstrip()+"\\n\"\n"
-MasterFile.close()
-MasterContent+=";"
-MasterFileOut = open("src/masterStyleSheet.css.cxx","w")
-MasterFileOut.write(MasterContent)
-MasterFileOut.close()
+
 #+ ██████  ██    ██ ███    ██     ████████  █████  ██████   ██████  ███████ ████████
 #+ ██   ██ ██    ██ ████   ██        ██    ██   ██ ██   ██ ██       ██         ██
 #+ ██████  ██    ██ ██ ██  ██        ██    ███████ ██████  ██   ███ █████      ██
