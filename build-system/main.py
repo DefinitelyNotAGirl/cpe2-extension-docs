@@ -16,7 +16,6 @@ if sys.argv.__len__() == 2:
 	#check for other options
 	#else:
 	target = sys.argv[1]
- 
 #+
 #+
 #+ copy directory structure from /src

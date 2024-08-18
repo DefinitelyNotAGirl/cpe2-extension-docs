@@ -63,7 +63,7 @@ def run() -> int:
 		if buildTarget(trg,i,targets.__len__()) != 0:
 			return 2
 		i+=1
-	if compile.debug.link(objects,"./extension") != 0:
+	if compile.debug.link(objects,"./cpe2-extension-docs") != 0:
 		return 2
 	print(" \033[32m\U0001F6E0\033[0m debug build complete.")
 	return 0
