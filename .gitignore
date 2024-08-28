@@ -2,3 +2,5 @@ build/
 __pycache__/
 extension
 .DS_Store
+compiler
+cpe2-extension-docs
